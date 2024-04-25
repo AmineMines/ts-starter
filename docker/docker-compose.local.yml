@@ -1,0 +1,9 @@
+services:
+  postgresql:
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: ts-starter-db
+
+    # uncomment to enable EVERY SQL query logs, useful for fine grained debugging :
+    # command: [ "postgres", "-c", "log_statement=all", "-c", "log_destination=stderr" ]

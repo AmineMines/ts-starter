@@ -12,7 +12,12 @@
   "scripts": {
     "build": "tsc",
     "test": "jest --testMatch='**/?(*.)+(spec).ts'",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .ts",
+    "compose-up": "docker-compose -f docker/docker-compose.yml -f docker/docker-compose.local.yml up -d postgresql",
+    "compose-down": "docker-compose -f docker/docker-compose.yml -f docker/docker-compose.local.yml down",
+    "prisma:generate": "yarn prisma format && yarn prisma generate",
+    "prisma:up-dev-and-ing": "yarn prisma:generate && yarn prisma migrate deploy && yarn prisma:up:intg",
+    "prisma:up:intg": "DATABASE_URL=postgresql://root:root@localhost:5432/ts-starter-db-test yarn prisma migrate dev"
   },
   "devDependencies": {
     "@gojob/eslint-config": "^5.0.0",
@@ -22,7 +27,11 @@
     "eslint-plugin-jest": "^27.9.0",
     "jest": "^29.7.0",
     "prettier": "^3.2.5",
+    "prisma": "^5.13.0",
     "ts-jest": "^29.1.2",
     "typescript": "^5.0.3"
+  },
+  "dependencies": {
+    "@prisma/client": "5.13.0"
   }
 }
