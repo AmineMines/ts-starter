@@ -9,6 +9,7 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
+    '@gojob/eslint-config/typescript',
   ],
   root: true,
   env: {
